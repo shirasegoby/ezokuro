@@ -100,7 +100,7 @@ perl outlier_SNP_overlap_gene_permu.pl
 python ./easySFS.py -i ezokuro_all_filtered2.recode.vcf -a -p popmap_easySFS -f -o ezo_kuroSFS --prefix ezo_kuroSFS --preview
 python ./easySFS.py -i ezokuro_all_filtered2.recode.vcf -a -p popmap_easySFS -f -o ezo_kuroSFS --prefix ezo_kuroSFS --proj=40,40
 
-
+# Run fastsimcoal2 using script in fastsimcoal2 folder
 
 
 
