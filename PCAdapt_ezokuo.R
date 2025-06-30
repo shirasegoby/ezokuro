@@ -1,18 +1,5 @@
 
-#source("/Users/hiraseshoutarou/Desktop/LEA/")
-#source("https://bioconductor.org/biocLite.R")
-#biocLite("LEA")
-#library(LEA)
 
-#R3.4.2じゃないとpcadaptが動かない。
-#install.packages("pcadapt")
-#install.packages("pcaPP")
-#install.packages("vcfR")
-#install.packages("beeswarm", dependencies = TRUE)
-#source("/Users/hiraseshoutarou/Desktop/vcfR/")
-#source("/Users/hiraseshoutarou/Desktop/pinfsc50/")
-#install.packages("pinfsc50")
-#library(pinfsc50)
 library(pcadapt)
 library("poppr")
 library("PopGenReport")
@@ -24,14 +11,12 @@ library(beeswarm)
 #＃https://cran.r-project.org/web/packages/pcadapt/vignettes/pcadapt.html
 
 getwd()
-setwd("/Users/shotarohirase/Desktop/エゾクロ解析re/pcadapt")
+setwd("./pcadapt")
 
-#################pedファイル
 data <- read.pcadapt("ezokuro_filtered.recode.dDocent.recode.rename2.sorted.ped",type="ped")
 
 ind <- read.table("ezokuro_filtered.recode.dDocent.recode.rename2.sorted.ped",header=F)
-#ind[2]
-#ベクターに変換する
+
 poplist.names <- ind$V1
 poplist.names
 
@@ -43,9 +28,6 @@ summary(x)
 
 #contribution
 (x$singular.values)^2
-#[1] 0.124960548 0.017445803 0.016360901 0.015111813 0.012698467 0.010999268
-#[7] 0.010752907 0.010222971 0.009669314 0.009263626
-
 
 #popの名前を取得
 ind2 <- read.table("ind_category",header=F)
@@ -101,8 +83,7 @@ beeswarm(data = data2, PC2score ~ ind2$V1, las = 2, col = col_list, pch = 16, xl
 dev.off()
 
 
-#########outlier SNP detection###################
-
+#########outlier SNP detection######
 locus <- read.table("ezokuro_filtered.recode.dDocent.recode.rename2.sorted.map",header=F)
 #locus$V1
 #locus$V2
@@ -117,17 +98,15 @@ plot(x,option="manhattan")
 library(qvalue)
 qval <- qvalue(x$pvalues)$qvalues
 p_q_value <-cbind(as.character(locus$V1),as.character(locus$V2),as.character(locus$V4),x$pvalues,qval)
-#p_q_value
+
 #threthold
 alpha <- 0.05
 
-#outliers <- which(qval<alpha)
 all <- which(qval<1)
 
 snp_pc <- get.pc(x,all)
 out <- cbind(na.omit(p_q_value),snp_pc$PC)
 
-#data.frameに変換
 out <-data.frame(out)
 
 out2 <- subset(out,as.numeric(as.character(out$qval))<0.05 & out$V6==1)
