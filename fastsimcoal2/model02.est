@@ -1,0 +1,16 @@
+// Priors and rules file 
+[PARAMETERS] 
+//各パラメーターの事前分布を記載
+//#isInt? #name #dist.#min #max 
+//all N are in number of diploid individuals
+1 N_EZO logunif 10000 1000000 
+1 N_KURO logunif 10000 1000000
+1 T1 logunif 1000 1000000 output
+1 ANC_EZO_KURO logunif 10000 1000000 output
+0 MIG_KURO_EZO logunif 1.0e-5 1.0e-2 output
+0 MIG_EZO_KURO logunif 1.0e-5 1.0e-2 output
+[RULES] 
+
+[COMPLEX PARAMETERS] 
+//[PARAMETERS]で定義した変数に計算処理を施して，新しい変数を定義します．
+0 ANCSIZE = ANC_EZO_KURO/N_EZO hide
