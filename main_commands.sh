@@ -96,6 +96,9 @@ python2 ./genomics_general_Martin_Simon/popgenWindows.py  -w 20000 -s 20000 -m 1
 #whether these 448 putative SNP loci were significantly enriched within annotated gene regions
 perl outlier_SNP_overlap_gene_permu.pl
 
+#fastsimcoal2
+python ./easySFS.py -i ezokuro_all_filtered2.recode.vcf -a -p popmap_easySFS -f -o ezo_kuroSFS --prefix ezo_kuroSFS --preview
+python ./easySFS.py -i ezokuro_all_filtered2.recode.vcf -a -p popmap_easySFS -f -o ezo_kuroSFS --prefix ezo_kuroSFS --proj=40,40
 
 
 
