@@ -1,4 +1,4 @@
-setwd("/Users/shotarohirase/Desktop/エゾクロ解析re/outflank/")
+setwd("./outflank/")
 
 library(devtools)
 source("http://bioconductor.org/biocLite.R")
@@ -29,9 +29,6 @@ library(devtools)
 if (!("qvalue" %in% installed.packages())){TODO}
 if (!("vcfR" %in% installed.packages())){install.packages("vcfR")} 
 
-#convert codeA
-#system("/Users/shotarohirase/Desktop/Genomic_tools/plink_mac/plink --file abalone_GRASDi_ezo_kuro_madaka_uniq_bam_minQ20_biallelic_minmeanDP10_minDP10.vcf.recode.vcf.pop_missing_filter.0.1_2.vcf.recode   --recodeA --out  abalone_GRASDi_ezo_kuro_madaka_uniq_bam_minQ20_biallelic_minmeanDP10_minDP10.vcf.recode.vcf.pop_missing_filter.0.1_2.vcf.OUTflank2 --allow-extra-chr")
-#codeAを読み込み
 data <- read.table("ezokuro_filtered.recode.dDocent.recode.rename2.sorted.OUTflank2.raw",header=F,skip=1)
 
 data2 <- data[, -which (colnames(data) %in% c("V1", "V2", "V3","V4","V5","V6"))]
@@ -39,10 +36,6 @@ data2 <- data[, -which (colnames(data) %in% c("V1", "V2", "V3","V4","V5","V6"))]
 write.table(data2,"mod.ped",quote=F,col.names=F,row.names=F)
 
 system("sed -e s/NA/9/g mod.ped > mod2.ped")
-
-SNPmat
-
-write.table(SNPmat,"mod.ped",quote=F,col.names=F,row.names=F)
 
 SNPmat <- read.table("mod2.ped",header=F)
 
@@ -62,7 +55,7 @@ hist(abalone$FSTNoCorr, breaks=seq(0,1, by=0.01))
 
 # Removing low Heterozygosity variants results in a more chi-square looking FST distribution
 hist(abalone$FSTNoCorr[abalone$He>0.1], breaks=seq(0,1, by=0.01))
-#He > 0.1がgood
+#He > 0.1 is good
 
 ###running outflank
 # increasing the Right Trim Fraction doesn't help, but increasing the left trim fraction enables a better fit
