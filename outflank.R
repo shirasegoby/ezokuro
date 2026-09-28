@@ -85,7 +85,7 @@ true_site <- subset(outflank_result$results,outflank_result$results$OutlierFlag=
 write.csv(true_site,"outflank_result_outlier.csv")
 
 
-#outlier数を確認する
+#outlier number
 dim(true_site)[1]
 
 #all locus from map file
