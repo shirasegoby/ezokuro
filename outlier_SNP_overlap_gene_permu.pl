@@ -23,7 +23,6 @@ print "$i\t";
 
 my @array="";
 
-#ランダムに448SNPを抽出し、geneとオーバーラップする数を調べる。
 system ("shuf -n 448 ./ezokuro_filtered.recode.dDocent.recode.rename2.map.bed  > temp.bed");
 
 system ("intersectBed -a temp.bed -b ./transcripts.fasta.transdecoder.genome.gtf.bed > temp2.bed");
