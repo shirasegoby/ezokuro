@@ -1,22 +1,7 @@
 setwd("./outflank/")
 
 library(devtools)
-source("http://bioconductor.org/biocLite.R")
-biocLite("qvalue")
-BiocManager::install("qvalue")
-install_github("whitlock/OutFLANK")
-BiocManager::install("LEA")
 library(LEA)
-devtools::install_github("https://github.com/whitlock/OutFLANK.git") 
-
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/OutFLANK.R")
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/Fst Diploids.R")
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/FST functions.R")
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/Fst Distribution plotter.R")
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/Likelihood functions for OutFLANK.R")
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/sim1a-data.R")
-source("/Users/shotarohirase/Desktop/Genomic_tools/OutFLANK/R/which_pruned-data.R")
-
 library("OutFLANK")
 library("poppr")
 library("PopGenReport")
