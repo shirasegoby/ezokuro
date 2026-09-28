@@ -90,8 +90,8 @@ vcftools --gzvcf ./ezokuro_all_snp.vcf.gz --max-alleles 2  --minDP 10 --min-mean
 
 bgzip ezokuro_all_filtered2.recode.vcf
 tabix ezokuro_all_filtered2.recode.vcf.gz
-python2 ./genomics_general_Martin_Simon/VCF_processing/parseVCF.py  -i ezokuro_all_filtered2.recode.vcf.gz --skipIndels | bgzip > ezokuro_all_filtered2.recode.geno.gz
-python2 ./genomics_general_Martin_Simon/popgenWindows.py  -w 20000 -s 20000 -m 100 -g   ./ezokuro_all_filtered2.recode.geno.gz  -o  ezokuro_all_filtered2.recode.geno.popGenwindow.gz -f phased -T 5 -p PO01_08Tu  -p PO02_KZ  -p PO03_AmH  -p PO04_KTT  -p PO05_KB  -p PO06_KD  -p PO07_Kgg  -p PO08_Fs  -p PO09_Ib  -p PO10_CB  -p PO11_KS  -p PO12_SO  -p PO13_L  -p PO14_I  -p PO15_KM  -p PO16_Sb  -p SJ01_RIN  -p SJ02_06RM  -p SJ03_MTN  -p SJ04_AmNt  -p SJ05_AKC  -p SJ06_ATS  -p SJ07_Tb  -p SJ08_YM  -p SJ09_AW  -p SJ10_Ng2  -p SJ11_IF  -p SJ12_N  -p SJ13_SN  -p SJ14_Sg  -p SJ15_Ns --popsFile ./popmap2.txt
+python2 ./VCF_processing/parseVCF.py  -i ezokuro_all_filtered2.recode.vcf.gz --skipIndels | bgzip > ezokuro_all_filtered2.recode.geno.gz
+python2 popgenWindows.py  -w 20000 -s 20000 -m 100 -g   ./ezokuro_all_filtered2.recode.geno.gz  -o  ezokuro_all_filtered2.recode.geno.popGenwindow.gz -f phased -T 5 -p PO01_08Tu  -p PO02_KZ  -p PO03_AmH  -p PO04_KTT  -p PO05_KB  -p PO06_KD  -p PO07_Kgg  -p PO08_Fs  -p PO09_Ib  -p PO10_CB  -p PO11_KS  -p PO12_SO  -p PO13_L  -p PO14_I  -p PO15_KM  -p PO16_Sb  -p SJ01_RIN  -p SJ02_06RM  -p SJ03_MTN  -p SJ04_AmNt  -p SJ05_AKC  -p SJ06_ATS  -p SJ07_Tb  -p SJ08_YM  -p SJ09_AW  -p SJ10_Ng2  -p SJ11_IF  -p SJ12_N  -p SJ13_SN  -p SJ14_Sg  -p SJ15_Ns --popsFile ./popmap2.txt
 
 #whether these 448 putative SNP loci were significantly enriched within annotated gene regions
 perl outlier_SNP_overlap_gene_permu.pl
